@@ -8,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Security;
-import java.security.Signature;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
@@ -39,10 +38,6 @@ public class BCRSAEncryption
     private static final String ENC_PRIVATE_KEY_FILE = "henryprivatekey.asc";
     private static final String ENC_SECRET_PWD = "HenryWright";
     
-    private static final String SIGN_PUBLIC_KEY_FILE = "marcopublickey.asc";
-    private static final String SIGN_PRIVATE_KEY_FILE = "marcoprivatekey.asc";
-    private static final String SIGN_SECRET_PWD = "MarcoPolo";
-    
     public BCRSAEncryption() {
     	init();
     }
@@ -68,52 +63,6 @@ public class BCRSAEncryption
 	        byte[] decryptedBytes  = decrpyCipher.doFinal(cipherBytes);
 	        System.out.println("Decrypted data: " + new String(decryptedBytes));
 			
-			
-			
-//			PrivateKey privateKey = bcrsaEncryption.getPrivateKey(SIGN_PRIVATE_KEY_FILE, SIGN_SECRET_PWD.toCharArray());
-//			Signature rsaSign = Signature.getInstance("SHA256withRSA", "BC");
-//			rsaSign.initSign(privateKey);
-//			rsaSign.update("123456789".getBytes());
-//
-//			byte[] signedData = rsaSign.sign();
-//			System.out.println("Signed : " + new String(Base64.getEncoder().encode(signedData)));
-//			byte[] cipherBytes = cipher.doFinal(signedData);
-//			System.out.println("123456789 : ");
-//			System.out.println("Encrypted : " +  new String(Base64.getEncoder().encode(cipherBytes)));
-//
-//			cipherBytes = cipher.doFinal("987654321".getBytes());
-//			rsaSign.update(cipherBytes);
-//			signature = rsaSign.sign();
-//			System.out.println("987654321 : ");
-//			System.out.println("Encrypted : " +  new String(Base64.getEncoder().encode(cipherBytes)));
-//			System.out.println("Signed : " + new String(Base64.getEncoder().encode(signature)));
-//			
-//			
-//			cipherBytes = cipher.doFinal("123454321".getBytes());
-//			rsaSign.update(cipherBytes);
-//			signature = rsaSign.sign();
-//			System.out.println("123454321 : ");
-//			System.out.println("Encrypted : " +  new String(Base64.getEncoder().encode(cipherBytes)));
-//			System.out.println("Signed : " + new String(Base64.getEncoder().encode(signature)));
-//		
-//			PublicKey csltPublicKey = bcrsaEncryption.getPublicKey(SIGN_PUBLIC_KEY_FILE);	
-//			Signature rsaVerify = Signature.getInstance("SHA256withRSA", "BC");
-//			rsaVerify.initVerify(csltPublicKey);
-//			rsaVerify.update("123456789".getBytes());
-//			System.out.println("Verification: " + rsaVerify.verify(signedData));
-//			
-//			PrivateKey decryptPrivateKey = bcrsaEncryption.getPrivateKey(ENC_PRIVATE_KEY_FILE, ENC_SECRET_PWD.toCharArray());;
-//			Cipher decrpyCipher = Cipher.getInstance("RSA", "BC");
-//			decrpyCipher.init(Cipher.DECRYPT_MODE, decryptPrivateKey);
-//	        byte[] decryptedBytes  = decrpyCipher.doFinal(cipherBytes);
-//	        System.out.println("Decrypted data: " + new String(Base64.getEncoder().encode(decryptedBytes)));
-//	        
-//			PublicKey realPublicKey = bcrsaEncryption.getPublicKey(REAL_PUBLIC_KEY_FILE);	
-//			rsaVerify = Signature.getInstance("SHA256withRSA", "BC");
-//			rsaVerify.initVerify(realPublicKey);
-//			rsaVerify.update(decryptedBytes);
-//			System.out.println("Verification: " + rsaVerify.verify(signature));
-	        
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
